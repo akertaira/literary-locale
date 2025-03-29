@@ -2,39 +2,59 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { BookOpen } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative bg-accent py-24 md:py-32">
-      <div className="absolute inset-0 bg-[url('https://source.unsplash.com/random/?bookstore,library')] bg-cover bg-center opacity-20"></div>
-      <div className="relative container mx-auto px-4 flex flex-col items-center text-center">
-        <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-3xl">
-          Discover Your Next Favorite Book
-        </h1>
-        <p className="text-white/90 text-lg md:text-xl max-w-2xl mb-8">
-          Explore our curated collection of bestsellers, classics, and hidden gems. 
-          Find the perfect story that speaks to you.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Button 
-            size="lg" 
-            asChild
-            className="bg-white text-accent hover:bg-white/90"
-          >
-            <Link to="/books">Browse Collection</Link>
-          </Button>
-          <Button 
-            size="lg" 
-            variant="outline" 
-            asChild
-            className="border-white text-white hover:bg-white/10"
-          >
-            <Link to="/categories">
-              <BookOpen className="mr-2 h-5 w-5" />
-              Explore Categories
-            </Link>
-          </Button>
+    <section className="relative bg-background py-16 md:py-24">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="space-y-6">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              Discover Your <span className="text-accent">Next Favorite</span> Book
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-lg">
+              Explore our curated collection of bestsellers, classics, and hidden gems. 
+              Find the perfect story that speaks to you.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button 
+                size="lg" 
+                asChild
+                className="group"
+              >
+                <Link to="/books">
+                  Browse Collection
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                asChild
+              >
+                <Link to="/categories">
+                  Explore Categories
+                </Link>
+              </Button>
+            </div>
+          </div>
+          <div className="relative hidden md:block">
+            <div className="aspect-[3/4] relative rounded-lg overflow-hidden shadow-xl">
+              <img 
+                src="https://source.unsplash.com/random/?bookshelf,books" 
+                alt="Beautiful bookshelf" 
+                className="object-cover w-full h-full"
+              />
+            </div>
+            <div className="absolute -bottom-6 -left-6 w-48 h-48 rounded-lg overflow-hidden shadow-lg rotate-6">
+              <img 
+                src="https://source.unsplash.com/random/?book,reading" 
+                alt="Reading book" 
+                className="object-cover w-full h-full"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

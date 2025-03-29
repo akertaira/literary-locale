@@ -110,7 +110,7 @@ export default {
 				'slide-up': 'slide-up 0.4s ease-out'
 			},
 			fontFamily: {
-				serif: ['Georgia', 'Cambria', 'serif'],
+				serif: ['Playfair Display', 'Georgia', 'Cambria', 'serif'],
 				sans: ['Inter', 'system-ui', 'sans-serif']
 			},
 			typography: {

@@ -26,20 +26,20 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background border-b border-border">
+    <header className="sticky top-0 z-50 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2" onClick={closeMenu}>
-            <BookOpen className="h-6 w-6 text-accent" />
+            <BookOpen className="h-6 w-6" />
             <span className="text-xl font-serif font-semibold">Literary Locale</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="text-foreground hover:text-accent transition-colors">Home</Link>
-            <Link to="/books" className="text-foreground hover:text-accent transition-colors">Books</Link>
-            <Link to="/categories" className="text-foreground hover:text-accent transition-colors">Categories</Link>
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link to="/" className="text-primary-foreground hover:text-white/80 transition-colors font-medium">Home</Link>
+            <Link to="/books" className="text-primary-foreground hover:text-white/80 transition-colors font-medium">Books</Link>
+            <Link to="/categories" className="text-primary-foreground hover:text-white/80 transition-colors font-medium">Categories</Link>
           </nav>
 
           {/* Search and Cart (Desktop) */}
@@ -48,16 +48,16 @@ const Navbar: React.FC = () => {
               <Input
                 type="text"
                 placeholder="Search books..."
-                className="w-64 pl-9 pr-4 py-2"
+                className="w-64 pl-9 pr-4 py-2 bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 h-4 w-4 text-primary-foreground/60" />
             </form>
             <Button 
               variant="ghost" 
               size="icon" 
-              className="relative"
+              className="relative text-primary-foreground hover:text-white/80 hover:bg-primary-foreground/10"
               onClick={() => setIsCartOpen(true)}
             >
               <ShoppingCart className="h-5 w-5" />
@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="relative"
+              className="relative text-primary-foreground hover:bg-primary-foreground/10"
               onClick={() => setIsCartOpen(true)}
             >
               <ShoppingCart className="h-5 w-5" />
@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
                 </span>
               )}
             </Button>
-            <Button variant="ghost" size="icon" onClick={toggleMenu}>
+            <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10" onClick={toggleMenu}>
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
@@ -93,22 +93,22 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-card py-4 px-4 border-b border-border">
+        <div className="md:hidden bg-primary py-4 px-4 border-t border-primary-foreground/10">
           <nav className="flex flex-col space-y-4 mb-4">
-            <Link to="/" className="text-foreground hover:text-accent transition-colors" onClick={closeMenu}>Home</Link>
-            <Link to="/books" className="text-foreground hover:text-accent transition-colors" onClick={closeMenu}>Books</Link>
-            <Link to="/categories" className="text-foreground hover:text-accent transition-colors" onClick={closeMenu}>Categories</Link>
+            <Link to="/" className="text-primary-foreground hover:text-white/80 transition-colors" onClick={closeMenu}>Home</Link>
+            <Link to="/books" className="text-primary-foreground hover:text-white/80 transition-colors" onClick={closeMenu}>Books</Link>
+            <Link to="/categories" className="text-primary-foreground hover:text-white/80 transition-colors" onClick={closeMenu}>Categories</Link>
           </nav>
           <form onSubmit={handleSearch} className="relative">
             <Input
               type="text"
               placeholder="Search books..."
-              className="w-full pl-9 pr-4 py-2"
+              className="w-full pl-9 pr-4 py-2 bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Button type="submit" className="mt-2 w-full">Search</Button>
+            <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 h-4 w-4 text-primary-foreground/60" />
+            <Button type="submit" className="mt-2 w-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground">Search</Button>
           </form>
         </div>
       )}

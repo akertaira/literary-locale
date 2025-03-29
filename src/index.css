@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -108,14 +108,31 @@
 
 @layer components {
   .book-card {
-    @apply relative overflow-hidden rounded-md border border-border bg-card transition-all duration-300 hover:shadow-md;
+    @apply relative overflow-hidden rounded-lg shadow-sm transition-all duration-300 hover:shadow-md;
+  }
+
+  .book-card-overlay {
+    @apply absolute inset-0 flex flex-col items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300;
   }
 
   .book-card:hover .book-card-overlay {
     @apply opacity-100;
   }
+}
 
-  .book-card-overlay {
-    @apply absolute inset-0 flex flex-col items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300;
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
